@@ -39,11 +39,6 @@ module.exports = {
     "jest": true
   },
   "rules": {
-    // Let TS handle these
-    "no-unused-vars": OFF,
-    "no-useless-constructor": OFF,
-    "@typescript-eslint/no-useless-constructor": ERROR,
-
     // These are pretty strict TS rules, you might want to turn 'em off
     "@typescript-eslint/no-explicit-any": WARN,
     "@typescript-eslint/explicit-function-return-type": WARN,
@@ -54,8 +49,23 @@ module.exports = {
     "@typescript-eslint/explicit-member-accessibility": OFF,
     "@typescript-eslint/no-empty-function": OFF,
 
-    "no-debugger": OFF,
-    "no-alert": OFF,
+    // Disable base rules, handled by @typescript-eslint
+    "no-useless-constructor": OFF,
+    "no-unused-vars": OFF,
+    "@typescript-eslint/no-useless-constructor": ERROR,
+    "@typescript-eslint/no-unused-vars": [
+      WARN,
+      {
+        "ignoreSiblings": true,
+        "argsIgnorePattern": "res|next|^err"
+      }
+    ],
+
+    // Stuff you probably shouldn't have in prod
+    "no-debugger": WARN,
+    "no-alert": WARN,
+    "no-console": WARN,
+
     "no-await-in-loop": OFF,
     "no-return-assign": [
       ERROR,
@@ -66,13 +76,6 @@ module.exports = {
       "ForInStatement",
       "LabeledStatement",
       "WithStatement"
-    ],
-    "no-unused-vars": [
-      WARN,
-      {
-        "ignoreSiblings": true,
-        "argsIgnorePattern": "res|next|^err"
-      }
     ],
     "prefer-const": [
       ERROR,
@@ -102,7 +105,6 @@ module.exports = {
       "terms": ["fix", "look", "todo"],
       "location": "anywhere"
     }],
-    "no-console": OFF,
     "import/prefer-default-export": OFF,
     "import": OFF,
     "func-names": OFF,
@@ -161,7 +163,7 @@ module.exports = {
     "prettier/prettier": [
       ERROR,
       {
-        "trailingComma": "es5",
+        "trailingComma": "all",
         "singleQuote": true,
         "printWidth": 80,
       }
@@ -189,5 +191,14 @@ module.exports = {
     "simple-import-sort/sort": WARN
   },
   "settings": {
-  }
+  },
+  "overrides": [
+    {
+      // Allow using devDependencies in stories/tests
+      "files": [ "**/*.{stories,spec,test}.*" ],
+      "rules": {
+        "import/no-extraneous-dependencies": OFF,
+      }
+    },
+  ]
 }
