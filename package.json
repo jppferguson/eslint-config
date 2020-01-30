@@ -1,7 +1,7 @@
 {
-  "name": "eslint-config-jppferguson",
+  "name": "@jppferguson/eslint-config",
   "version": "0.0.1",
-  "description": "ESLint and Prettier Config from jppferguson",
+  "description": "ESLint and Prettier Config from @jppferguson",
   "keywords": [
     "javascript",
     "ecmascript",
