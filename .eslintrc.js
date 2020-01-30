@@ -39,6 +39,21 @@ module.exports = {
     "jest": true
   },
   "rules": {
+    // Let TS handle these
+    "no-unused-vars": OFF,
+    "no-useless-constructor": OFF,
+    "@typescript-eslint/no-useless-constructor": ERROR,
+
+    // These are pretty strict TS rules, you might want to turn 'em off
+    "@typescript-eslint/no-explicit-any": WARN,
+    "@typescript-eslint/explicit-function-return-type": WARN,
+
+    // Again, pretty strict so off for now
+    "@typescript-eslint/no-object-literal-type-assertion": OFF,
+    "@typescript-eslint/no-var-requires": OFF,
+    "@typescript-eslint/explicit-member-accessibility": OFF,
+    "@typescript-eslint/no-empty-function": OFF,
+
     "no-debugger": OFF,
     "no-alert": OFF,
     "no-await-in-loop": OFF,
@@ -72,7 +87,9 @@ module.exports = {
     "no-unused-expressions": [
       ERROR,
       {
-        "allowTaggedTemplates": true
+        "allowShortCircuit": true,
+        "allowTaggedTemplates": true,
+        "allowTernary": true,
       }
     ],
     "no-param-reassign": [
@@ -81,6 +98,10 @@ module.exports = {
         "props": false
       }
     ],
+    "no-warning-comments": ["warn", {
+      "terms": ["fix", "look", "todo"],
+      "location": "anywhere"
+    }],
     "no-console": OFF,
     "import/prefer-default-export": OFF,
     "import": OFF,
@@ -99,12 +120,18 @@ module.exports = {
     "react/no-unescaped-entities": OFF,
     "jsx-a11y/accessible-emoji": OFF,
     "react/require-default-props": OFF,
+    "react/sort-prop-types": WARN,
+    "react/jsx-sort-default-props": WARN,
+    "react/jsx-sort-props": WARN,
+    "react/jsx-props-no-spreading": OFF,
     "react/jsx-filename-extension": [
       WARN,
       {
         "extensions": [
           ".js",
-          ".jsx"
+          ".jsx",
+          ".ts",
+          ".tsx",
         ]
       }
     ],
@@ -144,12 +171,22 @@ module.exports = {
       WARN,
       {
         "aspects": [
-          "invalidHref"
-        ]
+          "invalidHref",
+          "preferButton",
+        ],
+        "components": [
+          "Link",
+        ],
+        "specialLink": [
+          "hrefLeft",
+          "hrefRight",
+        ],
       }
     ],
     "react-hooks/rules-of-hooks": ERROR,
-    "react-hooks/exhaustive-deps": WARN
+    "react-hooks/exhaustive-deps": WARN,
+    "module-resolver/use-alias": ERROR,
+    "simple-import-sort/sort": WARN
   },
   "settings": {
   }
