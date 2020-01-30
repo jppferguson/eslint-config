@@ -10,7 +10,7 @@ You might like them - or you might not. Don't worry you can always change them.
 * Fixes issues and formatting errors with Prettier
 * Lints + Fixes inside of html script tags
 * Lints + Fixes React via eslint-config-airbnb
-* You can see all the [rules here](https://github.com/jppferguson/eslint-config-jppferguson/blob/master/.eslintrc.js) - these generally abide by the code written in my courses. You are very welcome to overwrite any of these settings, or just fork the entire thing to create your own.
+* You can see all the [rules here](https://github.com/jppferguson/eslint-config/blob/master/.eslintrc.js). You are very welcome to overwrite any of these settings, or just fork the entire thing to create your own.
 
 ## Installing
 
@@ -27,7 +27,7 @@ I also install globally so that any project or rogue JS file I write will have l
 1. Then we need to install everything needed by the config:
 
 ```shell
-npx install-peerdeps --dev eslint-config-jppferguson
+npx install-peerdeps --dev @jppferguson/eslint-config
 ```
 
 1. You can see in your package.json there are now a big list of devDependencies.
@@ -37,7 +37,7 @@ npx install-peerdeps --dev eslint-config-jppferguson
 ```json
 {
   "extends": [
-    "jppferguson"
+    "@jppferguson"
   ]
 }
 ```
@@ -60,7 +60,7 @@ Tip: You can alternatively put this object in your `package.json` under the prop
 1. First install everything needed:
 
 ```shell
-npx install-peerdeps --global eslint-config-jppferguson
+npx install-peerdeps --global @jppferguson/eslint-config
 ```
 
 (**note:** npx is not a spelling mistake of **npm**. `npx` comes with when `node` and `npm` are installed and makes script running easier 😃)
@@ -77,7 +77,7 @@ In your `.eslintrc` file, it should look like this:
 ```json
 {
   "extends": [
-    "jppferguson"
+    "@jppferguson"
   ]
 }
 ```
@@ -91,7 +91,7 @@ If you'd like to overwrite eslint or prettier settings, you can add the rules in
 ```js
 {
   "extends": [
-    "jppferguson"
+    "@jppferguson"
   ],
   "rules": {
     "no-console": 2,
@@ -138,15 +138,15 @@ Once you have done one, or both, of the above installs. You probably want your e
 ## With Create React App
 
 1. You gotta eject first `npm run eject` or `yarn eject`
-1. Run `npx install-peerdeps --dev eslint-config-jppferguson`
-1. Crack open your `package.json` and replace `"extends": "react-app"` with `"extends": "jppferguson"`
+1. Run `npx install-peerdeps --dev @jppferguson/eslint-config`
+1. Crack open your `package.json` and replace `"extends": "react-app"` with `"extends": "@jppferguson"`
 
 ## 🤬🤬🤬🤬 IT'S NOT WORKING
 
 Start fresh. Sometimes global modules can goof you up. This will remove them all:
 
 ```shell
-npm remove --global eslint-config-jppferguson babel-eslint eslint eslint-config-prettier eslint-config-airbnb eslint-plugin-html eslint-plugin-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react prettier eslint-plugin-react-hooks
+npm remove --global @jppferguson/eslint-config babel-eslint eslint eslint-config-prettier eslint-config-airbnb eslint-plugin-html eslint-plugin-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react prettier eslint-plugin-react-hooks
 ```
 
 To do the above for local, omit the `--global` flag.
